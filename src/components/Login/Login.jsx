@@ -7,7 +7,7 @@ import "./_Login.scss"
 export default function Login() {
   return (
     <div>
-        <NavLink className='main-nav-item' to="/signin">
+        <NavLink className='main-nav-item' to="/login">
           <FontAwesomeIcon icon={faCircleUser} />
           Sign In
         </NavLink>

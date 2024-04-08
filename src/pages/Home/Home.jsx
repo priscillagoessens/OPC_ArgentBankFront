@@ -32,7 +32,7 @@ export default function Home() {
       <Banner/>
       <section className='features'>
         {items.map((item) => (     
-          <Card icon={item.icon} title={item.title} text={item.text}/> 
+          <Card icon={item.icon} title={item.title} text={item.text} key={item.title}/> 
         ))}
       </section>
     </div>
