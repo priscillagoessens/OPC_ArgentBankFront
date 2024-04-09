@@ -1,11 +1,14 @@
 import CardAccount from "../../components/CardAccount/CardAccount"
 import Title from "../../components/Title/Title"
 import "./_Profile.scss"
+// import { userProfile } from '../../store/userSlice'
+// import {useSelector } from 'react-redux';
 
 
+function User() {
+    // const user = useSelector(userProfile);
+    // console.log(user)
 
-
-export default function User() {
   return (
     <main className="main bg-dark">      
       <Title />
@@ -44,3 +47,5 @@ export default function User() {
     </main>
   )
 }
+
+export default User

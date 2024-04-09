@@ -5,20 +5,17 @@ import Login from '../Login/Login'
 import Logout from '../Logout/Logout';
 import './_Header.scss';
 import { useSelector } from 'react-redux';
-import {selectUser} from '../../features/userSlice'
+import {selectUser} from '../../store/authSlice';
 
-export default function Header() {
-  
+export default function Header() { 
   const user = useSelector(selectUser);
-  console.log(user)
-
   return (
     <div>
       <nav className='main-nav'>
         <Link to="/">
           <img className='main-nav-logo-image' src={logo} alt="Argent Bank Logo"/>
         </Link>
-        {user ? <Logout/> : <Login/> }
+        {user !== null && user !== undefined ? <Logout/> : <Login/>}
       </nav>
     </div>
   )
