@@ -1,11 +1,11 @@
-import {logout, selectUser} from '../../store/userSlice'
+import {logout} from '../../store/authSlice'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleUser} from '@fortawesome/free-solid-svg-icons'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 function Logout() {
-  const user = useSelector(selectUser)
+  // const user = useSelector(selectUser)
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -20,7 +20,7 @@ function Logout() {
         <div>
         <a className="main-nav-item" >
         <FontAwesomeIcon icon={faCircleUser}/>
-          {user.name}
+          {/* {user.name} */}
         </a>
         <a className="main-nav-item" onClick={handleLogout}>
           <i className="fa fa-sign-out"></i>

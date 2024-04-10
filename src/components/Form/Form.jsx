@@ -3,29 +3,29 @@ import './_Form.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleUser} from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { loginUser } from '../../store/authSlice';
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../../actions/action';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 
 
 function Form() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const error = useSelector((state)=> state.user)
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const error = useSelector((state)=> state.auth.error);
+  // const token = useSelector((state) => state.auth.token);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let userCredential = { email, password };
-    dispatch(loginUser(userCredential)).then((result) => {
-      if (result.payload) {
-        setEmail('');
-        setPassword('');
-        navigate('/profile');
-      }
-    });
-  };
+    dispatch(loginUser({ email:email, password:password })).then((action)=>{
+      // localStorage.setItem("token", action.payload.token)
+      navigate("/profile");
+    })
+  }
+
 
   return (
     <section className='sign-in-content'>

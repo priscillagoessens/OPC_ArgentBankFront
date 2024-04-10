@@ -1,17 +1,24 @@
 import CardAccount from "../../components/CardAccount/CardAccount"
 import Title from "../../components/Title/Title"
 import "./_Profile.scss"
-// import { userProfile } from '../../store/userSlice'
-// import {useSelector } from 'react-redux';
-
+import {userProfile } from '../../actions/action'
+import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
 
 function User() {
-    // const user = useSelector(userProfile);
-    // console.log(user)
+  const dispatch = useDispatch();
+  // const user = useSelector(state => state.user)
+  // console.log(user)
+  
+  useEffect(()=>{
+    dispatch(userProfile())
+  },[dispatch])
+  const firstName = useSelector((state) => state.user.firstName);
+
 
   return (
-    <main className="main bg-dark">      
-      <Title />
+    <main className="main bg-dark">     
+      <Title name={firstName}/>
       <h2 className="sr-only">Accounts</h2>
       <CardAccount/>
       {/* <section className="account">

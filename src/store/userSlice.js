@@ -1,20 +1,31 @@
-// import axios from "axios";
+import { createSlice } from "@reduxjs/toolkit";
+import{userProfile} from '../actions/action'
 
-// export const userProfile = async (user) => {
-//         const token = localStorage.getItem('token');
-//         const response = await axios.post(
-//             "http://localhost:3001/api/v1/user/profile",
-//             null, // Pas de données à envoyer avec la requête POST
-//             {
-//                 headers: {
-//                     Authorization: `Bearer ${token}`
-//                 }
-//             }
-//         );
-//         const data = response.data; // Récupérer les données de la réponse
-//         console.log(data); // Afficher les données dans la console
-//         return data; // Retourner les données si nécessaire
+const initialState = {
+    email: null,
+    firstName: null,
+    lastName: null,
+    error: null
+};
 
-// };
-
-// export default userProfile
+const userSlice = createSlice({
+    name: "user",
+    initialState,
+    reducers: {
+    },
+    extraReducers(builder) {
+      builder
+        .addCase(userProfile.fulfilled, (state, action) => {
+          state.email = action.payload.email;
+          state.firstName = action.payload.firstName;
+          state.lastName = action.payload.lastName;
+          state.error = null;
+        })
+        .addCase(userProfile.rejected, (state, action) => {
+          state.status = "failed";
+          state.error = action.payload.message;
+        })
+    },
+  });
+  
+export default userSlice
