@@ -1,18 +1,18 @@
 import CardAccount from "../../components/CardAccount/CardAccount"
 import Title from "../../components/Title/Title"
 import "./_Profile.scss"
-import {userProfile } from '../../actions/action'
+import { userProfile } from "../../redux/actions/action"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
 function User() {
   const dispatch = useDispatch();
   // const user = useSelector(state => state.user)
-  // console.log(user)
   
   useEffect(()=>{
     dispatch(userProfile())
   },[dispatch])
+  
   const firstName = useSelector((state) => state.user.firstName);
 
 

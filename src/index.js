@@ -6,7 +6,7 @@ import App from './App';
 
 //Redux
 import { Provider } from 'react-redux';
-import store  from './store/store';
+import store from './redux/store/store';
 
 const container = document.getElementById('root');
 const root = createRoot(container);

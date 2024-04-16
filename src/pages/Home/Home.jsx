@@ -1,9 +1,9 @@
 import React from 'react'
 import Banner from '../../components/Banner/Banner'
 import Card from '../../components/Card/Card'
-import chatIcon from '../../assets/img/icon-chat.png';
-import moneyIcon from '../../assets/img/icon-money.png';
-import securityIcon from '../../assets/img/icon-security.png';
+import chatIcon from '../../assets/img/icon-chat-S.webp';
+import moneyIcon from '../../assets/img/icon-money-S.webp';
+import securityIcon from '../../assets/img/icon-security-S.webp';
 import './_Home.scss'
 
 // import items from"../../assets/datas/items.json"
