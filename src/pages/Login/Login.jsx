@@ -1,5 +1,5 @@
 import React from 'react'
-import Form from '../../components/Form/Form'
+import LoginForm from '../../components/Form/LoginForm'
 import "./_Login.scss"
 import { useEffect } from "react";
 
@@ -18,7 +18,7 @@ function Login() {
     
   return (
       <main className="main bg-dark">
-        <Form/>
+        <LoginForm/>
       </main>
   )
 }

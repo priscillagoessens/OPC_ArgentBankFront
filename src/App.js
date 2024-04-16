@@ -13,17 +13,14 @@ function App() {
     <Router>
         <Header/>
         <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            {/* <Route path="/profile" element={<Profile />} /> */}
-            <Route
-              path="/profile"
-              element={
-              <ProtectedRoute isProtected={true}>
-                <Profile />
-              </ProtectedRoute>
-              }
-             />
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={
+            <ProtectedRoute isProtected={true}>
+              <Profile />
+            </ProtectedRoute>
+          }
+          />
         </Routes>
         <Footer/>
     </Router>

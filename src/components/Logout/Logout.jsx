@@ -1,10 +1,12 @@
 import { logout } from '../../redux/store/authSlice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleUser} from '@fortawesome/free-solid-svg-icons'
-import { useDispatch } from 'react-redux';
+import { faCircleUser, faSignOut} from '@fortawesome/free-solid-svg-icons'
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { userProfile } from "../../redux/actions/action"
+import { useEffect } from "react"
 
-function Logout() {
+function Logout({name}) {
   // const user = useSelector(selectUser)
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -15,15 +17,22 @@ function Logout() {
     navigate('/');
   }
 
+  const firstName = useSelector((state) => state.user.firstName);
+
+  
+  useEffect(()=>{
+    dispatch(userProfile())
+  },[dispatch])
+
   return (
     <div>
-        <div>
-        <a className="main-nav-item" >
-        <FontAwesomeIcon icon={faCircleUser}/>
-          {/* {user.name} */}
+      <div>
+        <a className="main-nav-item">
+          <FontAwesomeIcon icon={faCircleUser}/>
+          <span>{firstName}</span>
         </a>
         <a className="main-nav-item" onClick={handleLogout}>
-          <i className="fa fa-sign-out"></i>
+          <FontAwesomeIcon icon={faSignOut}/>
           Sign Out
         </a>
       </div>

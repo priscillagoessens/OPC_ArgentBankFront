@@ -21,17 +21,15 @@ const authSlice = createSlice({
   extraReducers: (builder)=>{
     builder
     .addCase(loginUser.fulfilled, (state, action) => {
-        state.user = action.payload;
-        state.isLogIn = true;
-        state.error =  null;
-        console.log('fulfilled ')
+      state.user = action.payload;
+      state.isLogIn = true;
+      state.error =  null;
     })
     .addCase(loginUser.rejected, (state, action) => {
-        state.user =  null;
-        state.isLogIn = null;
-        state.error =  action.payload;
+      state.user =  null;
+      state.isLogIn = null;
+      state.error =  action.payload;
     })
-    
     // extraReducers sert a gere les actions asynchrone
 }
 })
