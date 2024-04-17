@@ -2,7 +2,7 @@ import CardAccount from "../../components/CardAccount/CardAccount"
 import Title from "../../components/Title/Title"
 import Button from "../../components/Button/Button"
 import "./_Profile.scss"
-import { userProfile } from "../../redux/actions/action"
+import { userProfile,updateUser } from "../../redux/actions/action"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
@@ -11,10 +11,22 @@ function User() {
   const firstName = useSelector((state) => state.user.firstName);
   const lastName = useSelector((state) => state.user.lastName);
   const [isEditing, setIsEditing] = useState(false); 
+  const [userName, setUserName] = useState('');
 
   const showEditForm= (e) =>{
     e.preventDefault();
     setIsEditing(true)
+  }
+
+  const handleChange = (e)=>{
+    e.preventDefault();
+    console.log(userName)
+    dispatch(updateUser({userName}))
+    setIsEditing(false)
+  }
+
+  const closeEditForm = (e) =>{
+    setIsEditing(false)
   }
 
   useEffect(()=>{
@@ -28,21 +40,21 @@ function User() {
           <h1>Edit user info</h1>
           <div className="edit-form-elts">
             <label htmlFor="userName">User name: </label>
-            <input type="text" id="userName"/>
+            <input type="text" id="userName" value={userName} onChange={(e)=>setUserName(e.target.value)}/>
           </div>
           <div className="edit-form-elts">
             <label htmlFor="firstName">First name: </label>
-            <input type="text" id="firstName"/>
+            <input type="text" id="firstName" value={firstName} disabled/>
           </div>
           <div className="edit-form-elts">
             <label htmlFor="lastName">Last name: </label>
-            <input type="text" id="lastName"/>
+            <input type="text" id="lastName" value={lastName} disabled/>
           </div>
           <div className="edit-form-buttons">
-            <Button className="edit-button" >
+            <Button className="edit-button" onClick={handleChange}>
               Save
             </Button>
-            <Button className="edit-button" >
+            <Button className="edit-button" onClick={closeEditForm}>
               Cancel
             </Button>
           </div>

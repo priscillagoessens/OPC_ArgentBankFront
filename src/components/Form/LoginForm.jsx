@@ -19,7 +19,7 @@ function Form() {
     try{
       dispatch(loginUser({ email, password}))
     }catch(error){
-      console.error('Login error:', error.message);
+      console.error('Login error:', error);
     }
   }
 

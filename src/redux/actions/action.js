@@ -10,20 +10,16 @@ export const loginUser = createAsyncThunk(
             if (response.status === 200) {
                 localStorage.setItem('token', response.data.body.token);
             } else {
-                console.error("Erreur lors de la soumission du formulaire:", response.status);
-                // Gestion des erreurs dans Redux Toolkit
                 return thunkAPI.rejectWithValue("Identifiant ou mot de passe incorrect !");
             }
             return response.data;
         } catch (err) {
-            console.error("Erreur lors de la soumission du formulaire:", err.response.status);
-            // Gestion des erreurs dans Redux Toolkit
             return thunkAPI.rejectWithValue(err.response.data.message);
         }
     }
 );
 
-export const userProfile= createAsyncThunk(
+export const userProfile = createAsyncThunk(
     'user/fetchUser',
     async (_, thunkAPI) => {
         try{
@@ -35,7 +31,24 @@ export const userProfile= createAsyncThunk(
             });
             return response.data.body
         }catch(err){
-            return thunkAPI.rejectWithValue(err.response.data.errors)
+            return thunkAPI.rejectWithValue(err.message)
         }
     }
-)
+);
+
+export const updateUser = createAsyncThunk(
+    'user/updateUser',
+    async (userData, thunkAPI) => {
+      try {
+        const token = localStorage.getItem('token')
+        const response = await axios.put('http://localhost:3001/api/v1/user/profile', userData,{
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+        });
+        return response.data.body.userName;
+      }catch(err) {
+        return thunkAPI.rejectWithValue(err.message);
+      }
+    }
+  );
