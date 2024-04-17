@@ -20,7 +20,6 @@ function User() {
 
   const handleChange = (e)=>{
     e.preventDefault();
-    console.log(userName)
     dispatch(updateUser({userName}))
     setIsEditing(false)
   }
@@ -68,23 +67,23 @@ function User() {
             </>
           )}
           <>
-          <h2 className="sr-only">Accounts</h2>
-          <CardAccount 
-            title="Argent Bank Checking (x8349)"
-            amount="$2,082.79"
-            description="Available Balance"
+            <h2 className="sr-only">Accounts</h2>
+            <CardAccount 
+              title="Argent Bank Checking (x8349)"
+              amount="$2,082.79"
+              description="Available Balance"
             />
             <CardAccount
-            title="Argent Bank Savings (x6712)"
-            amount="$10,928.42"
-            description="Available Balance"
+              title="Argent Bank Savings (x6712)"
+              amount="$10,928.42"
+              description="Available Balance"
             />
             <CardAccount
-            title="Argent Bank Credit Card (x8349)"
-            amount="$184.30"
-            description="Current Balance"
+              title="Argent Bank Credit Card (x8349)"
+              amount="$184.30"
+              description="Current Balance"
             />
-            </> 
+          </> 
     </main>
   )
 }

@@ -6,8 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { userProfile } from "../../redux/actions/action"
 import { useEffect } from "react"
 
-function Logout({name}) {
-  // const user = useSelector(selectUser)
+function Logout() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -18,19 +17,30 @@ function Logout({name}) {
   }
 
   const firstName = useSelector((state) => state.user.firstName);
-
+  const userName = useSelector((state) => state.user.userName);
   
   useEffect(()=>{
     dispatch(userProfile())
   },[dispatch])
 
+  // Vérifie si le username existe et s'il est différent de firstName
+  const shouldDisplayUserName = userName && userName !== firstName;
+
   return (
     <div>
       <div>
-        <a className="main-nav-item">
-          <FontAwesomeIcon icon={faCircleUser}/>
-          <span>{firstName}</span>
-        </a>
+        {shouldDisplayUserName && (
+          <a className="main-nav-item">
+            <FontAwesomeIcon icon={faCircleUser}/>
+            <span>{userName}</span>
+          </a>
+        )}
+        {!shouldDisplayUserName && (
+          <a className="main-nav-item">
+            <FontAwesomeIcon icon={faCircleUser}/>
+            <span>{firstName}</span>
+          </a>
+        )}
         <a className="main-nav-item" onClick={handleLogout}>
           <FontAwesomeIcon icon={faSignOut}/>
           Sign Out

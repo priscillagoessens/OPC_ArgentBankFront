@@ -5,7 +5,7 @@ const initialState = {
     email: null,
     firstName: null,
     lastName: null,
-    userName:null
+    userName: null
 };
 
 const userSlice = createSlice({
@@ -22,7 +22,7 @@ const userSlice = createSlice({
           state.userName = action.payload.userName;
         })
         .addCase(updateUser.fulfilled, (state, action) => {
-          state.userName = action.payload.userName;
+          state.userName = action.payload;
         })
     }
   });
