@@ -33,19 +33,21 @@ function User() {
   },[dispatch])
   
   return (
-    <main className="main bg-dark">    
+    <main className="main bg-dark">   
+    <div className="header" >
      {isEditing ? (
-        <form className="header-edit-form" >
-          <h1>Edit user info</h1>
-          <div className="edit-form-elts">
+      <section className="edit-content">
+        <form >
+          <h1 className="edit-content-title">Edit user info</h1>
+          <div className="edit-content-input-wrapper">
             <label htmlFor="userName">User name: </label>
             <input type="text" id="userName" value={userName} onChange={(e)=>setUserName(e.target.value)}/>
           </div>
-          <div className="edit-form-elts">
+          <div className="edit-content-input-wrapper">
             <label htmlFor="firstName">First name: </label>
             <input type="text" id="firstName" value={firstName} disabled/>
           </div>
-          <div className="edit-form-elts">
+          <div className="edit-content-input-wrapper">
             <label htmlFor="lastName">Last name: </label>
             <input type="text" id="lastName" value={lastName} disabled/>
           </div>
@@ -58,6 +60,7 @@ function User() {
             </Button>
           </div>
         </form>
+        </section>
       ) : ( 
           <>
             <Title name={firstName} lastname={lastName}/>
@@ -66,6 +69,7 @@ function User() {
             </Button>
             </>
           )}
+          </div>
           <>
             <h2 className="sr-only">Accounts</h2>
             <CardAccount 
@@ -84,6 +88,7 @@ function User() {
               description="Current Balance"
             />
           </> 
+          
     </main>
   )
 }

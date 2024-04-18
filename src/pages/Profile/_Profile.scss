@@ -1,3 +1,7 @@
+.header{
+    color: #fff;
+    margin-bottom: 2rem;
+}
 .sr-only{
     border: 0 !important;
     clip: rect(1px, 1px, 1px, 1px) !important;
@@ -10,4 +14,53 @@
     position: absolute !important;
     width: 1px !important;
     white-space: nowrap !important;
+}
+
+//////
+.edit{
+    &-content{
+        box-sizing: border-box;
+        background-color: white;
+        width: 410px;
+        margin: 0 auto;
+        margin-top: 3rem;
+        padding: 2rem;
+        &-title{
+            font-family: Avenir, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-align: center;
+            color: #2c3e50;
+        }
+        &-input-wrapper{
+            display: flex;
+            flex-direction: row;
+            text-align: left;
+            margin-bottom: 1rem;
+            justify-content: space-between;
+            align-items: center;
+            label{
+                font-weight: bold;
+                color: #2c3e50;
+            }
+            input{
+                padding: 5px;
+                font-size: 1.2rem;
+            }
+        }
+        &-remember{
+            display: flex;
+            label {
+                margin-left: 0.25rem;
+            }
+        }
+    }
+    &-form-buttons{
+        display: flex;
+        justify-content: center;
+    }
+    &-button{
+        margin: 1rem;
+    }
+
 }

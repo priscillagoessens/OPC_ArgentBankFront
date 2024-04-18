@@ -2,13 +2,15 @@ import { logout } from '../../redux/store/authSlice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleUser, faSignOut} from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { userProfile } from "../../redux/actions/action"
 import { useEffect } from "react"
 
 function Logout() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const firstName = useSelector((state) => state.user.firstName);
+  const userName = useSelector((state) => state.user.userName);
 
   const handleLogout = (e)=>{
     e.preventDefault(); 
@@ -16,35 +18,32 @@ function Logout() {
     navigate('/');
   }
 
-  const firstName = useSelector((state) => state.user.firstName);
-  const userName = useSelector((state) => state.user.userName);
-  
   useEffect(()=>{
     dispatch(userProfile())
   },[dispatch])
 
   // Vérifie si le username existe et s'il est différent de firstName
-  const shouldDisplayUserName = userName && userName !== firstName;
+  const showUserName = userName && userName !== firstName;
 
   return (
     <div>
       <div>
-        {shouldDisplayUserName && (
-          <a className="main-nav-item">
+        {showUserName && (
+          <Link to="/profile" className="main-nav-item">
             <FontAwesomeIcon icon={faCircleUser}/>
             <span>{userName}</span>
-          </a>
+          </Link>
         )}
-        {!shouldDisplayUserName && (
-          <a className="main-nav-item">
+        {!showUserName && (
+          <Link className="main-nav-item">
             <FontAwesomeIcon icon={faCircleUser}/>
             <span>{firstName}</span>
-          </a>
+          </Link>
         )}
-        <a className="main-nav-item" onClick={handleLogout}>
+        <Link className="main-nav-item" onClick={handleLogout}>
           <FontAwesomeIcon icon={faSignOut}/>
           Sign Out
-        </a>
+        </Link>
       </div>
     </div>
   )

@@ -16,11 +16,7 @@ function Form() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try{
-      dispatch(loginUser({ email, password}))
-    }catch(error){
-      console.error('Login error:', error);
-    }
+    dispatch(loginUser({ email, password}))
   }
 
   return (
