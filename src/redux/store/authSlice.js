@@ -27,7 +27,7 @@ const authSlice = createSlice({
     })
     .addCase(loginUser.rejected, (state, action) => {
       state.user =  null;
-      state.isLogIn = null;
+      state.isLogIn = false;
       state.error =  action.payload;
     })
     // extraReducers sert a gere les actions asynchrone

@@ -2,14 +2,15 @@ import CardAccount from "../../components/CardAccount/CardAccount"
 import Title from "../../components/Title/Title"
 import Button from "../../components/Button/Button"
 import "./_Profile.scss"
-import { userProfile,updateUser } from "../../redux/actions/action"
-import { useEffect, useState } from "react"
+import { updateUser } from "../../redux/actions/action"
+import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
 function User() {
   const dispatch = useDispatch();
   const firstName = useSelector((state) => state.user.firstName);
   const lastName = useSelector((state) => state.user.lastName);
+  const inputName = useSelector((state)=> state.user.userName)
   const [isEditing, setIsEditing] = useState(false); 
   const [userName, setUserName] = useState('');
 
@@ -27,10 +28,6 @@ function User() {
   const closeEditForm = (e) =>{
     setIsEditing(false)
   }
-
-  useEffect(()=>{
-    dispatch(userProfile())
-  },[dispatch])
   
   return (
     <main className="main bg-dark">   
@@ -41,7 +38,7 @@ function User() {
           <h1 className="edit-content-title">Edit user info</h1>
           <div className="edit-content-input-wrapper">
             <label htmlFor="userName">User name: </label>
-            <input type="text" id="userName" value={userName} onChange={(e)=>setUserName(e.target.value)}/>
+            <input type="text" id="userName" defaultValue={inputName ? inputName : firstName} onChange={(e)=>setUserName(e.target.value)}/>
           </div>
           <div className="edit-content-input-wrapper">
             <label htmlFor="firstName">First name: </label>

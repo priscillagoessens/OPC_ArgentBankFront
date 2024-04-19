@@ -8,12 +8,12 @@ import Footer from './components/Footer/Footer';
 import { useSelector } from 'react-redux';
 
 
-const PrivateRoute = ({ children }) => {
+const PrivateRoute = () => {
   const isAuthenticated = useSelector((state) => state.auth.isLogIn);
   if (!isAuthenticated) {
     return <Navigate to="/login" />;
   }
-  return children ? children : <Outlet />;
+  return <Outlet/>;
 }
 
 function App() {
