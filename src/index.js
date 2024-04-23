@@ -11,6 +11,7 @@ import store from './redux/store/store';
 const container = document.getElementById('root');
 const root = createRoot(container);
 
+
 root.render(
   <StrictMode>
     <Provider store={store} >

@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 
 
 export default function Header() { 
-  const isLogIn = useSelector((state)=>state.auth.isLogIn);
+  const isLogIn = useSelector((state)=>state.user.isCo);
 
   return (
     <div>
@@ -16,7 +16,7 @@ export default function Header() {
         <Link to="/">
           <img className='main-nav-logo-image' src={logo} alt="Argent Bank Logo"/>
         </Link>
-        {isLogIn === true ? <Logout/> : <Login/>}
+        {isLogIn ? <Logout/> : <Login/>}
       </nav>
     </div>
   )

@@ -1,4 +1,4 @@
-import { logout } from '../../redux/store/authSlice';
+import { logout } from '../../redux/store/userSlice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleUser, faSignOut} from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from 'react-redux';

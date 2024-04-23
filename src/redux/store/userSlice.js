@@ -5,13 +5,18 @@ const initialState = {
     email: null,
     firstName: null,
     lastName: null,
-    userName: null
+    userName: null,
+    isCo: null,
 };
 
 const userSlice = createSlice({
     name: "user",
     initialState,
     reducers: {
+      logout(state) {
+        state.isCo =  false;
+        localStorage.removeItem('token')
+      }
     },
     extraReducers:(builder)=> {
       builder
@@ -20,6 +25,7 @@ const userSlice = createSlice({
           state.firstName = action.payload.firstName;
           state.lastName = action.payload.lastName;
           state.userName = action.payload.userName;
+          state.isCo = true
         })
         .addCase(updateUser.fulfilled, (state, action) => {
           state.userName = action.payload;
@@ -27,4 +33,5 @@ const userSlice = createSlice({
     }
   });
   
+  export const { logout } = userSlice.actions;
 export default userSlice

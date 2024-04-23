@@ -6,8 +6,6 @@ import moneyIcon from '../../assets/img/icon-money-S.webp';
 import securityIcon from '../../assets/img/icon-security-S.webp';
 import './_Home.scss'
 
-// import items from"../../assets/datas/items.json"
-
 const items = [
   {
     icon: chatIcon,

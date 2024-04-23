@@ -5,11 +5,11 @@ import Home from './pages/Home/Home'
 import Login from './pages/Login/Login';
 import Profile from './pages/Profile/Profile'
 import Footer from './components/Footer/Footer';
-import { useSelector } from 'react-redux';
-
+import { useDispatch, useSelector  } from 'react-redux';
+import { userProfile } from './redux/actions/action';
 
 const PrivateRoute = () => {
-  const isAuthenticated = useSelector((state) => state.auth.isLogIn);
+  const isAuthenticated = useSelector((state) => state.user.isCo);
   if (!isAuthenticated) {
     return <Navigate to="/login" />;
   }
@@ -17,6 +17,12 @@ const PrivateRoute = () => {
 }
 
 function App() {
+  const token = localStorage.getItem('token')
+  const dispatch = useDispatch()
+  if(token){
+    dispatch(userProfile({ isCo: true }));
+    
+  }
 
   return (
     <Router>
@@ -24,7 +30,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route element={<PrivateRoute logIn={true}/>}>
+          <Route element={<PrivateRoute />}>
               <Route path='/profile' element={<Profile/>}/>
            </Route>
         </Routes>
