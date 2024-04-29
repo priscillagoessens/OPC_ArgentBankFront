@@ -101,22 +101,38 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
-    /user/accounts/{accountId}:
+    /user/accounts/:
+      get:
+        tags:
+        - User Transactions
+        summary: User's Account
+        description: API for getting all accounts
+        parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          type: string
+          required: true
+        responses:
+          '200':
+            description: Transaction retrieved successully
+            schema:
+              $ref: '#/definitions/Transactions'
+          '400':
+            description: Bad request.
+          '500':
+            description: Internal Server Error
+  /user/accounts/month:
     get:
       tags:
       - User Transactions
-      summary: User's Account
-      description: API for getting all accounts
+      summary: Display all transactions for the current month
+      description: API for getting all transactions for the current month
       parameters:
       - in: header
         name: Authorization
         description: Attach Bearer JWT token
         type: string
-        required: true
-      - in: path
-        name: accountId
-        description: User's account ID
-        type: integer
         required: true
       responses:
         '200':
@@ -127,33 +143,7 @@ paths:
           description: Bad request.
         '500':
           description: Internal Server Error
-  /user/accounts/{accountId}/transactions:
-    get:
-      tags:
-      - User Transactions
-      summary: Transactions
-      description: API for getting all transactions for the current month
-      parameters:
-      - in: header
-        name: Authorization
-        description: Attach Bearer JWT token
-        type: string
-        required: true
-      - in: path
-        name: accountId
-        description: User's account ID
-        type: integer
-        required: true
-      responses:
-        '200':
-          description: Transaction retrieved successully
-          schema:
-            $ref: '#/definitions/Transactions'
-        '400':
-          description: Bad request. User ID must be an integer and larger than 0.
-        '500':
-          description: Internal Server Error
-  /user/accounts/{accountId}/transactions/{transactionsId}:
+  /user/accounts/{transactionsId}:
     get:
       tags:
       - User Transactions
@@ -164,11 +154,6 @@ paths:
         name: Authorization
         description: Attach Bearer JWT token
         type: string
-        required: true
-      - in: path
-        name: accountId
-        description: User's account ID
-        type: integer
         required: true
       - in: path
         name: transactionsId
@@ -184,7 +169,7 @@ paths:
           description: Bad request. User ID/ transaction ID must be an integer.
         '500':
           description: Internal Server Error
-  /user/accounts/{accountId}/transactions/{transactionsId}/category:
+  /user/accounts/{transactionsId}/category:
     patch:
       tags:
       - User Transactions
@@ -199,11 +184,6 @@ paths:
         name: Authorization
         description: Attach Bearer JWT token
         type: string
-        required: true
-      - in: path
-        name: accountId
-        description: User's account ID
-        type: integer
         required: true
       - in: path
         name: transactionsId
@@ -225,8 +205,8 @@ paths:
           description: Bad request.
         '500':
           description: Internal Server Error
-  /user/accounts/{accountId}/transactions/{transactionsId}/notes:
-    patch:
+  /user/accounts/{transactionsId}/notes:
+    post:
       tags:
       - User Transactions
       summary: Adding a note from transaction
@@ -238,11 +218,6 @@ paths:
         name: Authorization
         description: Attach Bearer JWT token
         type: string
-        required: true
-      - in: path
-        name: accountId
-        description: User's account ID
-        type: integer
         required: true
       - in: path
         name: transactionsId
