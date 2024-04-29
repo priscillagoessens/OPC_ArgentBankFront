@@ -164,7 +164,7 @@ paths:
         '200':
           description: Transaction retrieved successully
           schema:
-            $ref: '#/definitions/Transactions'
+            $ref: '#/definitions/TransactionsDetails'
         '400':
           description: Bad request. User ID/ transaction ID must be an integer.
         '500':
@@ -295,6 +295,19 @@ definitions:
       userName:
         type: string
   Transactions:
+    type: object
+    properties:
+      transactionsId:
+        type: integer
+      date:
+        type: string
+      description:
+        type: string
+      amount:
+        type: number
+      balance:
+        type: number
+  TransactionsDetails:
     type: object
     properties:
       transactionsId:
