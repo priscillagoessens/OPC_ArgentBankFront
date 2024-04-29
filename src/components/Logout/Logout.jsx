@@ -1,4 +1,5 @@
-import { logout } from '../../redux/store/userSlice';
+import { logout } from '../../redux/store/authSlice';
+import { deleteUserInfo } from '../../redux/store/userSlice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleUser, faSignOut} from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,6 +14,7 @@ function Logout() {
   const handleLogout = (e)=>{
     e.preventDefault(); 
     dispatch(logout())
+    dispatch(deleteUserInfo())
     navigate('/');
   }
 
@@ -30,11 +32,10 @@ function Logout() {
               <span>{firstName}</span>
             )}
           </Link>
-        
-        <Link className="main-nav-item" onClick={handleLogout}>
-          <FontAwesomeIcon icon={faSignOut}/>
-          Sign Out
-        </Link>
+          <Link className="main-nav-item" onClick={handleLogout}>
+            <FontAwesomeIcon icon={faSignOut}/>
+            Sign Out
+          </Link>
       </div>
     </div>
   )

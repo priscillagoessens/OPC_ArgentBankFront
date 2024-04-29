@@ -1,14 +1,16 @@
 
-import './_Form.scss'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleUser} from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../redux/actions/action';
+import { useNavigate } from 'react-router-dom';
 
 
-function Form() {
+function LoginForm() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -16,7 +18,9 @@ function Form() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(loginUser({ email, password}))
+    dispatch(loginUser({ email, password})).then(()=>{
+      navigate('/profile');
+    }) 
   }
 
   return (
@@ -55,4 +59,4 @@ function Form() {
   )
 }
 
-export default Form
+export default LoginForm

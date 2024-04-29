@@ -1,7 +1,7 @@
 import './_Banner.scss';
 function Banner() {
     return (
-      <div className='hero'>
+      <div className='hero' loading="lazy">
         <section className="hero-content">
           <h2 className="sr-only">Promoted Content</h2>
           <p className="subtitle">No fees.</p>

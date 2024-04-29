@@ -8,15 +8,14 @@ import { useSelector } from 'react-redux';
 
 
 export default function Header() { 
-  const isLogIn = useSelector((state)=>state.user.isCo);
-
+  const isLogIn = useSelector((state)=>state.auth.token);
   return (
     <div>
       <nav className='main-nav'>
         <Link to="/">
           <img className='main-nav-logo-image' src={logo} alt="Argent Bank Logo"/>
         </Link>
-        {isLogIn ? <Logout/> : <Login/>}
+        {isLogIn  ? <Logout/> : <Login/>}
       </nav>
     </div>
   )

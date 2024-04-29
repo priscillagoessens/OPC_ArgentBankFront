@@ -8,7 +8,7 @@ export const loginUser = createAsyncThunk(
             const response = await axios.post(`http://localhost:3001/api/v1/user/login`, userData);
             if (response.status === 200) {
                 localStorage.setItem('token', response.data.body.token);
-                thunkAPI.dispatch(userProfile()); 
+        
             } else {
                 return thunkAPI.rejectWithValue("Identifiant ou mot de passe incorrect !");
             }
@@ -19,8 +19,8 @@ export const loginUser = createAsyncThunk(
     }
 );
 
-export const userProfile = createAsyncThunk(
-    'user/fetchUser',
+export const getUserProfile = createAsyncThunk(
+    'user/getUserProfile',
     async (_, thunkAPI) => {
         try{
             const token = localStorage.getItem('token')

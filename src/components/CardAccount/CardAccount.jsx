@@ -4,7 +4,7 @@ import "./_CardAccount.scss"
 
 export default function CardAccount({ title, amount, description }) {
   const handleClick = () => {
-    console.log('Le bouton a été cliqué !');
+    console.log('View transaction');
   };
   return (
     <section className="account">

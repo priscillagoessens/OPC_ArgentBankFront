@@ -2,30 +2,41 @@ import CardAccount from "../../components/CardAccount/CardAccount"
 import Title from "../../components/Title/Title"
 import Button from "../../components/Button/Button"
 import "./_Profile.scss"
-import { updateUser } from "../../redux/actions/action"
-import { useState } from "react"
+import {  getUserProfile, updateUser } from "../../redux/actions/action"
+import {useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
-function User() {
+
+function Profile() {
   const dispatch = useDispatch();
   const firstName = useSelector((state) => state.user.firstName);
   const lastName = useSelector((state) => state.user.lastName);
   const inputName = useSelector((state)=> state.user.userName)
   const [isEditing, setIsEditing] = useState(false); 
   const [userName, setUserName] = useState('');
+  const token = useSelector((state) => state.auth.token);
 
+  useEffect(() => {
+    if (token ) {
+      dispatch(getUserProfile());
+    }
+  }, [token, dispatch]);
+
+  //Ouvre le formulaire d'edition
   const showEditForm= (e) =>{
     e.preventDefault();
     setIsEditing(true)
   }
 
-  const handleChange = (e)=>{
-    e.preventDefault();
-    dispatch(updateUser({userName}))
+  //Ferme le formulaire
+  const closeEditForm = (e) =>{
     setIsEditing(false)
   }
 
-  const closeEditForm = (e) =>{
+  //Envoie le username modifié et ferme le formulaire
+  const handleChange = (e)=>{
+    e.preventDefault();
+    dispatch(updateUser({userName}))
     setIsEditing(false)
   }
   
@@ -90,4 +101,4 @@ function User() {
   )
 }
 
-export default User
+export default Profile

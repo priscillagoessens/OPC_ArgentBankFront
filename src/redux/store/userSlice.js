@@ -1,31 +1,34 @@
 import { createSlice } from "@reduxjs/toolkit";
-import{ userProfile, updateUser } from '../actions/action'
+import{ getUserProfile, updateUser } from '../actions/action'
 
 const initialState = {
     email: null,
     firstName: null,
     lastName: null,
     userName: null,
-    isCo: null,
+    isAuth: false
 };
 
 const userSlice = createSlice({
     name: "user",
     initialState,
     reducers: {
-      logout(state) {
-        state.isCo =  false;
-        localStorage.removeItem('token')
+      deleteUserInfo: (state) => {
+        state.email = ""
+        state.firstName = ""
+        state.lastName = ""
+        state.userName = ""
+        state.isAuth =  false
       }
     },
     extraReducers:(builder)=> {
       builder
-        .addCase(userProfile.fulfilled, (state, action) => {
+        .addCase(getUserProfile.fulfilled, (state, action) => {
           state.email = action.payload.email;
           state.firstName = action.payload.firstName;
           state.lastName = action.payload.lastName;
           state.userName = action.payload.userName;
-          state.isCo = true
+          state.isAuth = true
         })
         .addCase(updateUser.fulfilled, (state, action) => {
           state.userName = action.payload;
@@ -33,5 +36,5 @@ const userSlice = createSlice({
     }
   });
   
-  export const { logout } = userSlice.actions;
+export const { deleteUserInfo } = userSlice.actions;
 export default userSlice
