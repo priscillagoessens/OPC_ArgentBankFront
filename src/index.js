@@ -11,9 +11,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 //Provider permet de rendre le store disponible a toute mon app
 root.render(
-  <React.StrictMode>
     <Provider store={store} >
       <App />
     </Provider>
-  </React.StrictMode>,
 );
