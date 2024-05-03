@@ -151,8 +151,8 @@ paths:
     put:
       tags:
       - User Transactions
-      summary: Update an existing category
-      description: API for updating a transaction's category from transaction
+      summary: Update category or notes
+      description: API for updating a transaction's category or notes from transaction
       produces:
         - application/json
       parameters:
