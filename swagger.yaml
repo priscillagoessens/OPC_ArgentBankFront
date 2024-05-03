@@ -103,27 +103,6 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
-  /user/accounts:
-    get:
-      tags:
-      - User Transactions
-      summary: User's Account
-      description: API for getting all accounts
-      parameters:
-      - in: header
-        name: Authorization
-        description: Attach Bearer JWT token
-        type: string
-        required: true
-      responses:
-        '200':
-          description: Transaction retrieved successully
-          schema:
-            $ref: '#/definitions/Transactions'
-        '400':
-          description: Bad request.
-        '500':
-          description: Internal Server Error
   /user/accounts/month:
     get:
       tags:
@@ -287,6 +266,7 @@ definitions:
         type: integer
       date:
         type: string
+        format: date
       description:
         type: string
       amount:
