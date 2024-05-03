@@ -67,8 +67,8 @@ paths:
         - User Module
       summary: User Profile API
       description: API for fetching a user profile
-      #produces:
-       # - application/json
+      produces:
+        - application/json
       responses:
         '200':
           description: User profile retrieved successully
@@ -103,7 +103,7 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
-  /user/accounts/month:
+  /user/transactions:
     get:
       tags:
       - User Transactions
@@ -125,7 +125,7 @@ paths:
           description: Bad request.
         '500':
           description: Internal Server Error
-  /user/accounts/{transactionsId}:
+  /user/transactions/{transactionsId}:
     get:
       tags:
       - User Transactions
@@ -148,8 +148,7 @@ paths:
           description: Not Found.
         '500':
           description: Internal Server Error
-  /user/accounts/{transactionsId}/category:
-    patch:
+    put:
       tags:
       - User Transactions
       summary: Update an existing category
@@ -162,44 +161,11 @@ paths:
         description: Transaction's ID
         required: true
         type: integer
-      - in: body
-        name: body
-        required: true
-        description: Update transaction's informations
-        schema:
-            $ref: '#/definitions/TransactionsUpdateCategory'
       responses:
         '200':
           description: Transaction updated successully'
-        '400':
-          description: Bad request.
-        '500':
-          description: Internal Server Error
-  /user/accounts/{transactionsId}/notes:
-    post:
-      tags:
-      - User Transactions
-      summary: Adding a note from transaction
-      description: API for updating transaction's notes
-      produces:
-        - application/json
-      parameters:
-      - in: path
-        name: transactionsId
-        description: Transaction's ID
-        required: true
-        type: integer
-      - in: body
-        name: body
-        required: true
-        description: Add notes detailed transaction
-        schema:
-            $ref: '#/definitions/TransactionsAddNotes'
-      responses:
-        '200':
-          description: Transaction updated successully
           schema:
-            $ref: '#/definitions/Transactions'
+            $ref: '#/definitions/UpdateTransaction'
         '400':
           description: Bad request.
         '500':
@@ -262,8 +228,6 @@ definitions:
   Transactions:
     type: object
     properties:
-      transactionsId:
-        type: integer
       date:
         type: string
         format: date
@@ -280,6 +244,7 @@ definitions:
         type: integer
       date:
         type: string
+        format: date
       description:
         type: string
       amount:
@@ -292,12 +257,10 @@ definitions:
         type: string
       notes:
         type: string
-  TransactionsUpdateCategory:
+  UpdateTransaction:
     type: object
     properties:
       category:
         type: string
-  TransactionsAddNotes:
-    properties:
       notes:
         type: string
