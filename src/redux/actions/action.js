@@ -8,7 +8,6 @@ export const loginUser = createAsyncThunk(
             const response = await axios.post(`http://localhost:3001/api/v1/user/login`, userData);
             if (response.status === 200) {
                 localStorage.setItem('token', response.data.body.token);
-        
             } else {
                 return thunkAPI.rejectWithValue("Identifiant ou mot de passe incorrect !");
             }

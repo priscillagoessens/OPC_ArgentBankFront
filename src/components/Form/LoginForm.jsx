@@ -52,7 +52,7 @@ function LoginForm() {
           Sign In
         </button> 
         {error &&(
-          <div>{error}</div>
+          <div className='sign-in-content_error'>{error}</div>
         )}
       </form>
     </section>

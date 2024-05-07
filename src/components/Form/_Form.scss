@@ -6,6 +6,9 @@
         margin: 0 auto;
         margin-top: 3rem;
         padding: 2rem;
+        &_error{
+            color:red;
+        }
     }
     &-button{
         display: block;
