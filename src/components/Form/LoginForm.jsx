@@ -16,6 +16,7 @@ function LoginForm() {
   const [password, setPassword] = useState('');
   const error = useSelector((state)=> state.auth.error);
 
+  //action qui dispatch et redirige vers /profile
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(loginUser({ email, password})).then(()=>{

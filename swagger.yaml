@@ -103,13 +103,67 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
-  /user/transactions:
+  /user/accounts:
+    get:
+      tags:
+      - User Accounts
+      summary: Display all Accounts
+      description: API for getting all accounts
+      parameters:
+      - in: body
+        name: body
+        description: Get user accounts
+        required: true
+        schema:
+            $ref: '#/definitions/Transactions'
+      responses:
+        '200':
+          description: User accounts
+          schema:
+            $ref: '#/definitions/Transactions'
+        '400':
+          description: Bad request.
+        '500':
+          description: Internal Server Error
+  /user/accounts/{accountsId}:
+    get:
+      tags:
+      - User Accounts
+      summary: Display single account
+      description: API for getting single account
+      parameters:
+      - in: path
+        name: accountsId
+        description: account's ID
+        required: true
+        type: integer
+      - in: body
+        name: body
+        description: Get user accounts
+        required: true
+        schema:
+            $ref: '#/definitions/Transactions'
+      responses:
+        '200':
+          description: User accounts
+          schema:
+            $ref: '#/definitions/Transactions'
+        '400':
+          description: Bad request.
+        '500':
+          description: Internal Server Error
+  /user/accounts/{accountsId}/transactions:
     get:
       tags:
       - User Transactions
       summary: Display all transactions for the current month
       description: API for getting all transactions for the current month
       parameters:
+      - in: path
+        name: accountsId
+        description: account's ID
+        required: true
+        type: integer
       - in: body
         name: body
         description: Get user accounts by month
@@ -125,7 +179,7 @@ paths:
           description: Bad request.
         '500':
           description: Internal Server Error
-  /user/transactions/{transactionsId}:
+  /user/accounts/{accountsId}/transactions/{transactionsId}:
     get:
       tags:
       - User Transactions
@@ -133,10 +187,21 @@ paths:
       description: API for getting a single transaction details
       parameters:
       - in: path
+        name: accountsId
+        description: account's ID
+        required: true
+        type: integer
+      - in: path
         name: transactionsId
         description: Transaction's ID
         required: true
         type: integer
+      - in: body
+        name: body
+        description: Get user accounts by month
+        required: true
+        schema:
+            $ref: '#/definitions/Transactions'
       responses:
         '200':
           description: Transaction retrieved successully
@@ -156,6 +221,11 @@ paths:
       produces:
         - application/json
       parameters:
+      - in: path
+        name: accountsId
+        description: account's ID
+        required: true
+        type: integer
       - in: path
         name: transactionsId
         description: Transaction's ID

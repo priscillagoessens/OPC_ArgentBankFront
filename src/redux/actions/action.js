@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from "axios" // axios permet une utilisation clair et simplifié des requetes http
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const loginUser = createAsyncThunk(

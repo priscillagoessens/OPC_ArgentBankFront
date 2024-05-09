@@ -21,13 +21,13 @@ const authSlice = createSlice({
     .addCase(loginUser.fulfilled, (state, action) => {
       state.user = action.payload;
       state.error =  null;
-      state.token = localStorage.getItem('token');
+      state.token = localStorage.getItem('token'); //on change le state du token 
     })
     .addCase(loginUser.rejected, (state, action) => {
       state.user =  null;
       state.error =  action.payload;
     })
-}
+  }
 })
 
 export const { logout } = authSlice.actions;

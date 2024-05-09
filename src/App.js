@@ -13,6 +13,7 @@ const PrivateRoute = () => {
   if (isAuthenticated == null ) {
     return <Navigate to="/login" />;
   }
+  //permet de rendre le composant associé  
   return <Outlet/>;
 }
 

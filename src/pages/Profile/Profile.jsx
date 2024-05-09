@@ -16,6 +16,7 @@ function Profile() {
   const [userName, setUserName] = useState('');
   const token = useSelector((state) => state.auth.token);
 
+  //recupere au render de la page le profil de l'utilisateur si token est prensent dans le state
   useEffect(() => {
     if (token ) {
       dispatch(getUserProfile());
