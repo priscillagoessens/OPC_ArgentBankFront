@@ -1,6 +1,6 @@
 ![ArgentBank](/src/assets/img/argentBankLogo-S.webp)
 
-# ArgentBank 🏦💵
+# ArgentBank 
 
 ![forthebadge](https://forthebadge.com/images/badges/uses-html.svg)
 ![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)
