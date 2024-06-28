@@ -1,71 +1,99 @@
-# Getting Started with Create React App
+![ArgentBank](/main/src/assets/img/argentBankLogo-S.webp)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# ArgentBank 🏦💵
 
-## Available Scripts
+![forthebadge](https://forthebadge.com/images/badges/uses-html.svg)
+![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)
+![forthebadge](https://forthebadge.com/images/badges/uses-js.svg)
+[![forthebadge](https://forthebadge.com/images/badges/uses-git.svg)](https://github.com/ArthurBlanc)
+[![React](https://img.shields.io/badge/react-20232a?style=for-the-badge&logo=react&logocolor=61dafb)](https://reactjs.org/)
 
-In the project directory, you can run:
+## Description :
 
-### `npm start`
+Ceci est un projet réalisé dans le cadre du programme de formation Développeur Front-end JavaScript React chez OpenClassrooms
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+> Écrivez des appels à l'API REST pour connecter le front au back et modélisez une API.
+>
+> #### Compétences évaluées :
+>
+> -   Implémenter un gestionnaire d'état dans une application React 🔄
+> -   Interagir avec une API 🤝
+> -   Modéliser une API 📝
+> -   S'authentifier à une API 🔑
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Situation du projet :
 
-### `npm test`
+Développeur Front-end dans une agence spécialisée dans le développement d’applications web.
+L’agence à un nouveau projet avec une nouvelle banque qui a besoin d'aide pour mettre en place son application. Le projet se décompose en deux phases :
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+-   Phase 1 : Authentification des utilisateurs - Création d'une application web permettant aux clients de se connecter et de gérer leurs comptes et leur profil.
+-   Phase 2 : Transactions - Spécifier les endpoints d’API nécessaires pour une deuxième mission.
 
-### `npm run build`
+Mon rôle lors de la phase 1 a été de développer l’application web avec authentification des utilisateurs à l’aide de React et Redux. Concernant la phase 2, mon rôle a été de proposer un [modèle pour la conception de l’API des transactions](/Front-end/swagger_phase_2.yaml) à ouvrir avec Swagger.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Phase 1 : Contraintes techniques :
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+-   Créer l’application web (responsive) avec React.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    -   Comme point de départ, le HTML statique et le CSS est fourni pour la page d'accueil, la page de connexion et la page de profil.
 
-### `npm run eject`
+-   Utiliser Redux pour gérer le state de l'application, notamment l’application doit avoir :
+    -   Un store pour gérer les données
+    -   Des actions pour l’envoi des informations
+    -   Des reducers pour gérer les changements d'état de l'application
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Phase 1 : Contraintes fonctionnelles :
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+-   L'utilisateur peut visiter la page d'accueil
+-   L'utilisateur peut se connecter au système
+    -   Accédez à la page de connexion (/login)
+    -   Remplir le formulaire de connexion avec ses identifiants
+    -   Se connecter à l’application en utilisant des jetons JWT pour l'authentification
+    -   Naviguer avec succès vers la page de profil (/profile)
+-   L'utilisateur ne peut voir les informations relatives à son propre profil qu'après s'être connecté avec succès
+    -   Accédez à la page de profil (/profile)
+    -   Voir leur prénom sur la page de profil
+    -   Voir les informations de compte bancaire
+-   L'utilisateur peut modifier le profil (nom et prénom) et conserver les données dans la base de données.
+-   L'utilisateur peut se déconnecter du système
+    -   Voir le bouton de déconnexion une fois connecté
+    -   Cliquez sur le bouton de déconnexion, déconnecte l’utilisateur et celui-ci revient à la page d'accueil (/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Installation :
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Procédure d'installation :
 
-## Learn More
+Cloner le repository
+Cloner le repository pour le back end : https://github.com/priscillagoessens/ArgentBank-website
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Installation et lancement du Back-end :
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Allez dans le projet "Back-end"  est suivre les instructions
 
-### Code Splitting
+2. Installer toutes les dépendances :
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+-   `npm install` ou `yarn`
 
-### Analyzing the Bundle Size
+3. Lancer le back-end sur le port 3001 (port par défaut) :
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+-   `npm run dev` ou `yarn run dev`
 
-### Making a Progressive Web App
+### Installation et lancement du Front-end :
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+1. Installer toutes les dépendances pour Front-end :
 
-### Advanced Configuration
+-   `npm install` ou `yarn`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+3. Lancer le port 3000 (port par défaut) :
 
-### Deployment
+-   `npm start` ou `yarn start`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Développé avec :
 
-### `npm run build` fails to minify
+-   [Sass](https://sass-lang.com/) - Préprocesseur CSS
+-   [React 18](https://fr.reactjs.org/) - Bibliothèque JavaScript libre développée par Facebook
+-   [Create React App](https://create-react-app.dev/) - Boîte à outils créée par Facebook, qui est la référence pour initier un projet React
+-   [React Router V6](https://reactrouter.com/) - Bibliothèque de routage pour React
+-   [Redux](https://redux.js.org/) - Bibliothèque JS de gestion d'état pour applications web
+-   [GitHub](https://github.com/) - Outil de gestion de versions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# ArgentBank
